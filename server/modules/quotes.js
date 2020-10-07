@@ -5,4 +5,14 @@ let quotesData = [
   { quote: 'Intelligence plus character-that is the goal of true education.', author: 'Martin Luther King, Jr.' }
 ];
 
-module.exports = quotesData;
+let index = 0;
+
+module.exports = {
+  list: quotesData,
+  thing: index
+}
+//see line 17 "app.get('/quotes', (req, res) => {
+//   console.log('Hi from get request');
+//   res.send(quotesData.thing);
+// });
+//quotesData is the variable name I GAVE to the import of the quotes.js file....taco
