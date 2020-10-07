@@ -5,7 +5,7 @@ let quotesData = [
   { quote: 'Intelligence plus character-that is the goal of true education.', author: 'Martin Luther King, Jr.' }
 ];
 
-let index = 0;
+let index = 'bananas';
 
 module.exports = {
   list: quotesData,
