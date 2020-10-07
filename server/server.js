@@ -28,7 +28,6 @@ app.get('/quotes', (req, res) => {
 
 app.get('/randomQuote', (req, res) => {
   let randomNumber = getRandomInt(quotesData.list.length);
-  
   res.send(quotesData.list[randomNumber]);
 });
 
