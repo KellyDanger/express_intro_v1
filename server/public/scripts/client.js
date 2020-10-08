@@ -4,7 +4,9 @@ $(document).ready(onReady);
 function onReady(){
   //console.log('Hello from jquery');
   //perform GET request
-  getRandomQuote();
+  getQuotes();
+
+  //event listeners
   $('#submit').on('click', submitQuote);
 }//end onReady
 
@@ -22,10 +24,22 @@ function submitQuote(){
     }
   }).then(function(response){
     console.log('response', response);
+    getQuotes();
   }).catch(function(error){
     alert(error);
   });//catches errors from the server and alerts the user
 }
+
+function getQuotes(){
+  console.log('get the quote');
+  $.ajax({
+    method: 'GET',
+    url: '/quotes'
+  }).then(function(response){
+    console.log('response', response);
+    appendToDom(response);
+  })
+};
 
 function getRandomQuote(){
   console.log('get the quote');
@@ -43,10 +57,13 @@ function getRandomQuote(){
 
 
 function appendToDom(dataToAppend){
-  $('#output').html(`
-    <p>
-      Quote: ${dataToAppend.quote}<br/> 
-      -<i>${dataToAppend.author}</i>
-    </p>
-  `)
+  $('#output').empty();
+  for(let i = 0; i < dataToAppend.length; i++){
+    $('#output').append(`
+      <p>
+        Quote: ${dataToAppend[i].quote}<br/> 
+        -<i>${dataToAppend[i].author}</i>
+      </p>
+    `)
+  }
 }//end appendToDom
