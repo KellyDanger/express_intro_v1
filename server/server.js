@@ -36,7 +36,7 @@ function getRandomInt(max){
 }
 //req is going to hold the data and it can be accessed in the post
 //req is an object
-app.post('/quotes', (req, res) => {
+app.post('/SubmitQuotes', (req, res) => {
   //req.body is whatever data is being sent...in this case, by postman
   //req.body is a standard command.... .body is a built in method with postman
   console.log('hello from post', req.body);

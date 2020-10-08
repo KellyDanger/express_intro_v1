@@ -1,12 +1,31 @@
-console.log('Hello from js');
+//console.log('Hello from js');
 $(document).ready(onReady);
 
 function onReady(){
-  console.log('Hello from jquery');
+  //console.log('Hello from jquery');
   //perform GET request
   getRandomQuote();
-
+  $('#submit').on('click', submitQuote);
 }//end onReady
+
+function submitQuote(){
+  let quote = $('#quote').val();
+  let author = $('#author').val();
+  console.log('clicked', quote, author);
+  //send data to server via post request
+  $.ajax({
+    method: 'POST',
+    url: '/submitQuotes',
+    data: {
+      quote: quote,
+      author: author
+    }
+  }).then(function(response){
+    console.log('response', response);
+  }).catch(function(error){
+    alert(error);
+  });//catches errors from the server and alerts the user
+}
 
 function getRandomQuote(){
   console.log('get the quote');
