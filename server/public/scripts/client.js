@@ -24,7 +24,7 @@ function getRandomQuote(){
 
 
 function appendToDom(dataToAppend){
-  $('#output').append(`
+  $('#output').html(`
     <p>
       Quote: ${dataToAppend.quote}<br/> 
       -<i>${dataToAppend.author}</i>
